@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="rock paper scissor logo image.jpeg">
+  <title>Rock Paper Scissor Game</title>
+  <link rel="stylesheet" href="rock paper game.css">
+</head>
+
+<body>
+  <div class="intro">
+    <div class="topic">Rock Paper Scissor game by<br> <span class="name-topic">Abinesh Srinivasan</span></div>
+  </div>
+  <div class="about">About:</div>
+  <div class="description">
+    Welcome to Rock, Paper, Scissors!   
+    Rock, Paper, Scissors is a classic hand game that's fun, simple, and always a great way to make quick decisions or
+    settle disputes. In this game, you'll face off against the computer in a battle of wits. Will you choose the mighty
+    Rock, the versatile Paper, or the sharp Scissors? It's a game of chance and strategy, where each choice can lead to
+    victory or Lose or a Tie. Can you outsmart the computer and become the Rock, Paper, Scissors champion? Click the buttons below
+    to make your move and find out!
+    Have fun and may the best hand win!<br>
+    <span class="note-word">Note:</span>
+    Strong Player will get 50 wins within 1 minute.
+  </div>
+  <div class="buttons">
+    <button class="button-emojis" onclick="play('rock')"><img class="player-emojis" src="rock-emoji.png"
+        alt=""></button>
+    <button class="button-emojis" onclick="play('paper')"><img class="player-emojis" src="paper-emoji.png"
+        alt=""></button>
+    <button class="button-emojis scissor-button" onclick="play('scissors')"><img class="player-emojis" src="scissors-emoji.png"
+        alt=""></button>
+  </div>
+  <div class="results">
+    <div class="result-value"></div>
+    <div class="result"></div>
+    <div class="update-score"></div>
+    <button onclick="resetScore()" class="reset-score">Reset Score</button>
+  </div>
+  <script src="rock paper game.js"></script>
+</body>
+
+</html>
