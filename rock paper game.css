@@ -2,11 +2,12 @@ body {
   background-color: white;
   color: black;
   font-family: Arial;
+  margin-bottom: 8%;
 }
 .intro {
   margin-top: 10%;
 }
-.about {
+.about,.key-mapping {
   font-weight: bold;
   font-size: 30px;
 }
@@ -23,8 +24,7 @@ body {
   color: blue;
   font-style: italic;
 }
-.reset-score {
-  display: block;
+.reset-score ,.auto-play{
   background-color: rgb(0, 149, 255);
   border: none;
   color: white;
@@ -32,10 +32,10 @@ body {
   padding: 4%;
   cursor: pointer;
 }
-.reset-score:hover{
+.reset-score:hover,.auto-play:hover{
   background-color: blue;
 }
-.reset-score:active{
+.reset-score:active,.auto-play:active{
   background-color: white;
   color: blue;
   border: blue solid 3px;
@@ -48,6 +48,30 @@ body {
 .player-emojis {
   border: black dashed 2px;
   background-color: white;
+}
+.website-title {
+  font-weight: bold;
+  color: black;
+  font-size: 25px;
+}
+.website {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  padding: 3%;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  background: linear-gradient(
+    to right,
+    red,
+    blue,
+    rgb(255, 79, 109),
+    orange,
+    violet,
+    gray,
+    limegreen
+  );
 }
 @media (max-width: 767px) {
   .topic {
@@ -78,13 +102,15 @@ body {
   .buttons {
     width: 150%;
     height: 150%;
-    /*border: black solid 2px;*/
   }
   .result-value,
   .update-score,
-  .reset-score,.result {
+  .reset-score,.auto-play,.result {
     font-size: 21px;
-    margin-bottom: 3%;
+    margin-bottom: 7%;
+  }
+  .auto-play{
+    margin-left: 3%;
   }
   .intro,
   .results {
@@ -99,11 +125,20 @@ body {
   .topic{
     padding: 3%;
   }
+  .website-title{
+    margin-bottom: 5%;
+  }
+  .website{
+    margin-left: -200px;
+  }
   .player-emojis {
     width: 60px;
     height: 60px;
     border-radius: 55px;
     padding: 15%;
+  }
+  .auto-play,.reset-score{
+    margin-left: 13%;
   }
   .description{
     width: 68%;
@@ -125,7 +160,7 @@ body {
     margin-bottom: 3%;
     margin-top: 3%;
   }
-  .reset-score{
+  .reset-score,.auto-play{
     padding: 1%;
     margin-top: 3%;
     margin-bottom: 2%;
@@ -168,13 +203,19 @@ body {
   .move-icon{
     width: 80px;
   }
-  .results,.reset-score{
+  .results,.reset-score,.auto-play{
     font-size: 30px;
   }
   .result-value,.result,.update-score{
     margin-bottom: 2%;
   }
   .reset-score{
+    margin-left: -100px;
+  }
+  .auto-play{
+    margin-left: 15%;
+  }
+  .reset-score,.auto-play{
     padding: 2%;
   }
   .results{
@@ -186,11 +227,17 @@ body {
   .update-score{
     margin-left: 7%;
   }
-  .reset-score{
-    margin-left: 10%;
+  .reset-score,.auto-play{
     outline: none;
   }
   .name-topic{
     margin-left: 10%;
+  }
+  .website{
+    font-size: 30px;
+  }
+  .website-title{
+    font-size: 35px;
+    margin-bottom: 7%;
   }
 }
