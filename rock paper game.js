@@ -1,16 +1,19 @@
 let win = 0,
   lose = 0,
-  tie = 0;
-let updateScore = document.querySelector(".update-score");
-let resultAnswer = document.querySelector(".result-value");
-let showResult=document.querySelector(".result")
+  tie = 0,
+  updateScore = document.querySelector(".update-score"),
+  resultAnswer = document.querySelector(".result-value"),
+  showResult = document.querySelector(".result"),
+  autoPlayButton = document.querySelector(".auto-play");
+// reset the score
 function resetScore() {
   (win = 0), (lose = 0), (tie = 0);
   updateScore.textContent = `Win:${win}  Lose:${lose}  Tie:${tie}`;
   resultAnswer.textContent = "";
-  showResult.textContent=""
+  showResult.textContent = "";
 }
-function play(userChoice) {
+// computer picks its choice
+function computerChoice() {
   let computer = Math.random();
   let computerMove = "";
 
@@ -21,15 +24,50 @@ function play(userChoice) {
   } else if (computer > 2 / 3 && computer <= 1) {
     computerMove = "scissors";
   }
+  return computerMove;
+}
+// auto play the game
+let isAutoPlay = false;
+let intervalId;
+function autoPlay() {
+  if (!isAutoPlay) {
+    intervalId = setInterval(() => {
+      playerMove = computerChoice();
+      play(playerMove);
+    }, 1000);
+    isAutoPlay = true;
+    autoPlayButton.textContent = "Stop Play";
+  } else {
+    clearInterval(intervalId);
+    isAutoPlay = false;
+    autoPlayButton.textContent = "Auto Play";
+  }
+}
+// key mapping for pc
+document.body.addEventListener('keydown', (event) => {
+  if (event.key === 'r')
+    play('rock');
+  else if (event.key === 'p')
+    play('paper');
+  else if (event.key === 's')
+    play('scissors');
+  else if (event.key === 'a')
+    autoPlay();
+  else if (event.key === 'q')
+    resetScore();
+})
+
+// function to play the game
+function play(userChoice) {
+  let computerMove = computerChoice();
   if (computerMove === userChoice) {
     resultAnswer.innerHTML = `You 
     <img src="${userChoice}-emoji.png" class="move-icon">
     <img src="${computerMove}-emoji.png" class="move-icon">
     Computer
     `;
-    showResult.textContent="Stalemate Draw"
+    showResult.textContent = "Stalemate Draw";
     tie++;
-    //alert(`You picked ${userChoice}. computeruter picked ${computerMove}. It's a tie!`);
   } else if (
     (computerMove === "rock" && userChoice === "scissors") ||
     (computerMove === "paper" && userChoice === "rock") ||
@@ -39,10 +77,9 @@ function play(userChoice) {
     <img src="${userChoice}-emoji.png" class="move-icon">
     <img src="${computerMove}-emoji.png" class="move-icon">
     Computer
-    `
+    `;
     showResult.textContent = "You Lose";
     lose++;
-    //alert(`You picked ${userChoice}. computeruter picked ${computerMove}. You lose!`);
   } else {
     resultAnswer.innerHTML = `You 
     <img src="${userChoice}-emoji.png" class="move-icon">
@@ -51,7 +88,6 @@ function play(userChoice) {
     `;
     showResult.textContent = "You Win";
     win++;
-    //alert(`You picked ${userChoice}. computeruter picked ${computerMove}. You win!`);
   }
   updateScore.textContent = `Win:${win}  Lose:${lose}  Tie:${tie}`;
 }
